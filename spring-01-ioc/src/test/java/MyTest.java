@@ -4,6 +4,8 @@ import com.kuang.dao.UserDaoSqlserverImpl;
 import com.kuang.service.UserService;
 import com.kuang.service.UserServiceImpl;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author chenpi
@@ -20,4 +22,12 @@ public class MyTest {
 
     }
 
+    public static void main(String[] args) {
+        //获取ApplicationContext：拿到Spring的容器
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+
+        //容器在手，天下我有，需要什么，就直接get什么！
+        UserServiceImpl userServiceImpl = (UserServiceImpl) context.getBean("userServiceImpl");
+        userServiceImpl.getUser();
+    }
 }
