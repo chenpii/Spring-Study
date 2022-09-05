@@ -18,4 +18,7 @@
     <bean id="user" class="com.kuang.pojo.User">
         <constructor-arg name="name" value="狂神"/>
     </bean>
+
+    <bean id="userT" class="com.kuang.pojo.UserT"/>
+
 </beans>
