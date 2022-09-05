@@ -1,4 +1,5 @@
 import com.kuang.pojo.User;
+import com.kuang.pojo.UserT;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -8,7 +9,7 @@ public class MyTest {
     public void test() {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-        User user = (User) context.getBean("user");
+        UserT user = (UserT) context.getBean("user2");
         user.show();
 
     }
