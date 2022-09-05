@@ -8,8 +8,8 @@ public class MyTest {
     @Test
     public void test() {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-        UserT user = (UserT) context.getBean("user2");
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserT user = (UserT) context.getBean("u2");
         user.show();
 
     }
