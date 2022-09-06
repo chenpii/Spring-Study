@@ -4,7 +4,65 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="address" class="com.kuang.pojo.Address">
+        <property name="address" value="中国"/>
+    </bean>
+
     <bean id="stu" class="com.kuang.pojo.Student">
+
+        <!-- 普通值注入 value-->
         <property name="name" value="张三"/>
+
+        <!-- bean注入 ref-->
+        <property name="address" ref="address"/>
+
+        <!-- 数组 -->
+        <property name="books">
+            <array>
+                <value>红楼梦</value>
+                <value>西游记</value>
+                <value>水浒传</value>
+                <value>三国演义</value>
+            </array>
+        </property>
+
+        <!-- List集合 -->
+        <property name="hobbys">
+            <list>
+                <value>听歌</value>
+                <value>看电影</value>
+                <value>打游戏</value>
+            </list>
+        </property>
+
+        <!-- Map集合 -->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="111122222222223333"/>
+                <entry key="银行卡" value="888888888"/>
+            </map>
+        </property>
+        <!-- Set集合 -->
+        <property name="games">
+            <set>
+                <value>塞尔达</value>
+                <value>巫师三</value>
+                <value>黑神话</value>
+            </set>
+        </property>
+
+        <!-- null -->
+        <property name="wife">
+            <null/>
+        </property>
+
+        <!-- Properties -->
+        <property name="info">
+            <props>
+                <prop key="学号">202209060101</prop>
+                <prop key="性别">女</prop>
+                <prop key="专业">计算机</prop>
+            </props>
+        </property>
     </bean>
 </beans>
