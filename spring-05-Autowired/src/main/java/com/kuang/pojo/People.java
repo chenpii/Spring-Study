@@ -1,13 +1,19 @@
 package com.kuang.pojo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.annotation.Resource;
 
 public class People {
 
     private String name;
-    @Autowired
+
+    @Resource
     private Cat cat;
-    @Autowired
+
+    @Resource
     private Dog dog;
 
 
