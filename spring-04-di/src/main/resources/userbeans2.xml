@@ -8,4 +8,8 @@
 
     <!--p命名空间注入，可以直接注入属性的值：properties-->
     <bean id="user" class="com.kuang.pojo.User" p:name="kuang" p:age="18"/>
+
+    <!--c命名空间注入，通过构造器注入：constructor-arg-->
+    <bean id="user2" class="com.kuang.pojo.User" c:name="狂神" c:age="18"/>
+
 </beans>
