@@ -13,5 +13,6 @@ public class Client {
         Proxy proxy = new Proxy(host);
         //租客不用面对房东，直接找中介租房即可
         proxy.rent();
+
     }
 }
