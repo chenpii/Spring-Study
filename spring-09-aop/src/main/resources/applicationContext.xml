@@ -14,36 +14,35 @@
     <bean id="afterLog" class="com.kuang.log.AfterLog"/>
 
 
-    <!--方式一：使用原生Spring API的接口-->
-    <!--配置aop:需要导入aop的约束-->
+    <!--&lt;!&ndash;方式一：使用原生Spring API的接口&ndash;&gt;-->
+    <!--&lt;!&ndash;配置aop:需要导入aop的约束&ndash;&gt;-->
     <!--<aop:config>-->
-
     <!--    &lt;!&ndash;切入点：-->
     <!--        expression表达式：execution(要执行的位置! * * * * *)-->
     <!--    &ndash;&gt;-->
     <!--    <aop:pointcut id="point" expression="execution(* com.kuang.service.UserServiceImpl.*(..))"/>-->
-
     <!--    &lt;!&ndash; 执行环绕增加！&ndash;&gt;-->
     <!--    <aop:advisor advice-ref="log" pointcut-ref="point"/>-->
     <!--    <aop:advisor advice-ref="afterLog" pointcut-ref="point"/>-->
-
     <!--</aop:config>-->
 
 
-    <!-- 方式二：自定义类-->
-    <bean id="diy" class="com.kuang.diy.DiyPointCut"/>
+    <!--&lt;!&ndash; 方式二：自定义类&ndash;&gt;-->
+    <!--<bean id="diy" class="com.kuang.diy.DiyPointCut"/>-->
+    <!--<aop:config>-->
+    <!--    &lt;!&ndash;自定义切面 aspect，ref 要引用的类&ndash;&gt;-->
+    <!--    <aop:aspect ref="diy">-->
+    <!--        &lt;!&ndash;切入点 pointcut：即要执行的位置&ndash;&gt;-->
+    <!--        <aop:pointcut id="point" expression="execution(* com.kuang.service.UserServiceImpl.*(..))"/>-->
+    <!--        &lt;!&ndash;增加通知advice&ndash;&gt;-->
+    <!--        <aop:before method="before" pointcut-ref="point"/>-->
+    <!--        <aop:after method="after" pointcut-ref="point"/>-->
+    <!--    </aop:aspect>-->
+    <!--</aop:config>-->
 
-    <aop:config>
-        <!--自定义切面 aspect，ref 要引用的类-->
-        <aop:aspect ref="diy">
-            <!--切入点 pointcut：即要执行的位置-->
-            <aop:pointcut id="point" expression="execution(* com.kuang.service.UserServiceImpl.*(..))"/>
-
-            <!--增加通知advice-->
-            <aop:before method="before" pointcut-ref="point"/>
-            <aop:after method="after" pointcut-ref="point"/>
-        </aop:aspect>
-
-    </aop:config>
+    <!-- 方式三：注解实现-->
+    <bean id="annotationPointCut" class="com.kuang.diy.AnnotationPointCut"/>
+    <!-- 开启注解支持!   JDK(默认 proxy-target-class="false" ) cglib -->
+    <aop:aspectj-autoproxy proxy-target-class="false"/>
 
 </beans>
