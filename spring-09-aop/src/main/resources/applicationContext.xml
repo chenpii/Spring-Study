@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--注册bean-->
+
+    <bean id="userService" class="com.kuang.service.UserServiceImpl"/>
+    <bean id="log" class="com.kuang.log.Log"/>
+    <bean id="afterLog" class="com.kuang.log.AfterLog"/>
+
+
+    <!--方式一：使用原生Spring API的接口-->
+    <!--配置aop:需要导入aop的约束-->
+    <aop:config>
+
+        <!--切入点：
+            expression表达式：execution(要执行的位置! * * * * *)
+        -->
+        <aop:pointcut id="point" expression="execution(* com.kuang.service.UserServiceImpl.*(..))"/>
+
+        <!-- 执行环绕增加！-->
+        <aop:advisor advice-ref="log" pointcut-ref="point"/>
+        <aop:advisor advice-ref="afterLog" pointcut-ref="point"/>
+
+    </aop:config>
+</beans>
