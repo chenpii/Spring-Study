@@ -18,6 +18,7 @@
         <module>spring-07-appconfig</module>
         <module>spring-08-proxy</module>
         <module>spring-09-aop</module>
+        <module>spring-10-mybatis</module>
     </modules>
 
     <properties>
@@ -37,4 +38,26 @@
             <version>5.2.0.RELEASE</version>
         </dependency>
     </dependencies>
+
+    <!--在build中配置resources，来防止我们资源到处失败的问题-->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
 </project>
