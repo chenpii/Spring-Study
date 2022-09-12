@@ -9,6 +9,9 @@ import java.util.List;
  * @author chenpi
  * @create 2022-09-12 16:00
  */
+
+//Mybatis-plus 通用mybatis
+
 public class UserMapperImpl implements UserMapper {
 
     //我们的所有操作，在原来都是以sqlSession来执行

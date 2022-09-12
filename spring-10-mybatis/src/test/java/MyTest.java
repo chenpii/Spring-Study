@@ -1,5 +1,6 @@
 import com.kuang.mapper.UserMapper;
 import com.kuang.mapper.UserMapperImpl;
+import com.kuang.mapper.UserMapperImpl2;
 import com.kuang.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -22,7 +23,15 @@ public class MyTest {
     public void test2() {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        UserMapperImpl userMapper = context.getBean("userMapper", UserMapperImpl.class);
+        UserMapper userMapper = context.getBean("userMapper", UserMapper.class);
+        System.out.println(userMapper.getUsers());
+    }
+
+    @Test
+    public void test3() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        UserMapper userMapper = context.getBean("userMapper2", UserMapper.class);
         System.out.println(userMapper.getUsers());
     }
 }
